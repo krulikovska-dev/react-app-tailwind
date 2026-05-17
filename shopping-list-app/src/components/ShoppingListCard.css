@@ -1,41 +1,46 @@
-.shoppingListCard{
+.shoppingListCard {
     width: 200px;
     height: 200px;
-    border: 1px solid rgba(134, 132, 132, 0.221);
     border-radius: 20px;
     text-align: center;
-    padding: 5px;
-    box-shadow: 2px 2px 2px rgba(128, 128, 128, 0.132);
-}
-
-.shoppingListCard button {
-    background: rgba(93, 138, 161, 0.2);
-    border-radius: 2px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(93, 138, 161, 0.3);
+    padding: 20px 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s;
 }
 
 .shoppingListCard:hover {
-    transform: translateY(-3px)
-
+    transform: translateY(-4px);
 }
 
-.statusBadge {
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: 0.75rem;
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.cardHeader h3 {
+    font-size: 1.1rem;
     font-weight: 600;
-    text-transform: uppercase;
+    text-align: left;
+    margin: 0;
 }
 
-.statusBadge.active {
-    background-color: #e8f5e9;
-    color: #2e7d32;
+.cardDescription {
+    flex: 1;
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 16px;
 }
 
-.statusBadge.archived {
-    background-color: #ffebee;
-    color: #c62828;
+.detailButton {
+    margin-top: auto;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
 }

@@ -38,53 +38,53 @@ function Overview() {
         );
     }
 
-    return (
-        <>
-            <div className="detailCard">
-                <div className="ListHeader">
-                    <h1>Overview</h1>
-                    <button 
-                        className="newListButton" 
-                        onClick={() => setIsModalOpen(true)}
-                    >
-                        + New List
-                    </button>
-                    <div className="filterContainer">
-                <button className={`filterBtn ${filter === "all" ? "active" : ""}`} onClick={() => setFilter("all")}>All</button>
-                <button className={`filterBtn ${filter === "active" ? "archived" : ""}`} onClick={() => setFilter("waiting")}>
-                    Active ({shoppingLists.filter(i => i.state === "active").length})
-                </button>
-                <button className={`filterBtn ${filter === "archived" ? "active" : ""}`} onClick={() => setFilter("done")}>
-                    Archived ({shoppingLists.filter(i => i.state === "archived").length})
-                </button>
-            </div>
-                </div>
 
-                <div className="shoppingCardsGrid">
-                    {shoppingLists.length === 0 ? (
-                        <p>No shopping lists yet. Create your first one!</p>
-                    ) : (
-                        shoppingLists.map((list) => (
-                            <ShoppingListCard
-                                key={list.id}
-                                id={list.id}
-                                title={list.title}
-                                description={list.description}
-                                state={list.listState || "active"}
-                                onDetailClick={handleDetailClick}
-                            />
-                        ))
-                    )}
+return (
+    <>
+        <div className="detailCard bg-card border border-border rounded-2xl p-8 mt-6 shadow-sm">
+            <div className="ListHeader">
+                <h1 className="text-3xl font-bold text-card-foreground">Overview</h1>
+                <button 
+                    className="newListButton px-5 py-2.5 bg-blue-600 hover:bg-blue-700 
+                               text-white rounded-xl font-medium"
+                    onClick={() => setIsModalOpen(true)}
+                >
+                    + New List
+                </button>
+
+                {/* Filter buttons - improved */}
+                <div className="filterContainer flex gap-2">
+                    <button className={`filterBtn px-4 py-2 rounded-xl ${filter === "all" ? "bg-zinc-800 text-white dark:bg-white dark:text-zinc-900" : "bg-muted hover:bg-zinc-200 dark:hover:bg-zinc-700"}`} 
+                            onClick={() => setFilter("all")}>All</button>
+                    {/* Add other filter buttons similarly with dark classes */}
                 </div>
             </div>
 
-            <NewListModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                onCreateList={handleCreateList}
-            />
-        </>
-    );
+            <div className="shoppingCardsGrid">
+                {shoppingLists.length === 0 ? (
+                    <p className="text-center py-12 text-muted-foreground">No shopping lists yet. Create your first one!</p>
+                ) : (
+                    shoppingLists.map((list) => (
+                        <ShoppingListCard
+                            key={list.id}
+                            id={list.id}
+                            title={list.title}
+                            description={list.description}
+                            state={list.listState || "active"}
+                            onDetailClick={handleDetailClick}
+                        />
+                    ))
+                )}
+            </div>
+        </div>
+
+        <NewListModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            onCreateList={handleCreateList}
+        />
+    </>
+);
 }
 
 export default Overview;

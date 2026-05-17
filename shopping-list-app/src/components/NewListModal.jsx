@@ -7,22 +7,18 @@ function NewListModal({ isOpen, onClose, onCreateList }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
         if (!title.trim()) return;
 
-        
         const newList = {
-            id: Date.now().toString(),           
+            id: Date.now().toString(),
             title: title.trim(),
             description: description.trim(),
-            owner: "@luis1",                   
+            owner: "@luis1",
             items: [],
             members: [{ id: "1", nick: "@luis1" }]
         };
 
         onCreateList(newList);
-        
-        
         setTitle("");
         setDescription("");
         onClose();
@@ -34,13 +30,13 @@ function NewListModal({ isOpen, onClose, onCreateList }) {
         <div className="modalOverlay" onClick={onClose}>
             <div className="modalContent" onClick={e => e.stopPropagation()}>
                 <div className="modalHeader">
-                    <h2>Create New Shopping List</h2>
+                    <h2 className="text-card-foreground">Create New Shopping List</h2>
                     <button className="closeButton" onClick={onClose}>×</button>
                 </div>
 
                 <form onSubmit={handleSubmit}>
                     <div className="formGroup">
-                        <label htmlFor="title">List Title *</label>
+                        <label htmlFor="title" className="text-card-foreground">List Title *</label>
                         <input
                             id="title"
                             type="text"
@@ -53,7 +49,7 @@ function NewListModal({ isOpen, onClose, onCreateList }) {
                     </div>
 
                     <div className="formGroup">
-                        <label htmlFor="description">Description</label>
+                        <label htmlFor="description" className="text-card-foreground">Description</label>
                         <textarea
                             id="description"
                             value={description}

@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,7 +12,9 @@
 }
 
 .modalContent {
-    background: white;
+    background: var(--card);
+    color: var(--card-foreground);
+    border: 1px solid var(--border);
     border-radius: 16px;
     width: 90%;
     max-width: 600px;
@@ -33,37 +35,44 @@
 }
 
 .closeButton {
-    background: rgba(197, 169, 169, 0.2);
-    border-radius: 2px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(93, 138, 161, 0.3);
+    background: transparent;
+    color: var(--card-foreground);
+    border: 1px solid var(--border);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .closeButton:hover {
-    background: rgba(197, 169, 169, 0.47);
+    background: #ef4444;
+    color: white;
+    border-color: #ef4444;
 }
 
 .formGroup {
     margin-bottom: 18px;
-    
 }
 
 .formGroup label {
     display: block;
     margin-bottom: 6px;
     font-weight: 500;
-    color: #333;
 }
 
 .formGroup input,
 .formGroup textarea {
-    width: 90%;
+    width: 100%;
     padding: 12px 14px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border);
     border-radius: 8px;
     font-size: 1rem;
+    background-color: var(--card);
+    color: var(--card-foreground);
 }
 
 .formGroup textarea {
@@ -89,27 +98,24 @@
 }
 
 .cancelButton {
-    background: rgba(197, 169, 169, 0.2);
-    border-radius: 2px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(93, 138, 161, 0.3);
+    background: var(--muted);
+    color: var(--card-foreground);
+    border: 1px solid var(--border);
 }
 
 .cancelButton:hover {
-    background: rgba(197, 169, 169, 0.47);
+    background: #e5e5e5;
+}
+
+.dark .cancelButton:hover {
+    background: #3f3f46;
 }
 
 .createButton {
-    background: rgba(93, 138, 161, 0.2);
-    border-radius: 2px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(93, 138, 161, 0.3);
+    background: #3b82f6;
+    color: white;
 }
 
 .createButton:hover {
-    background: rgba(93, 138, 161, 0.473);
+    background: #2563eb;
 }
