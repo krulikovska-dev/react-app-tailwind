@@ -5,8 +5,10 @@ const middlewares = jsonServer.defaults();
 
 server.use(middlewares);
 
-// Simulate real network delay (optional but nice for development)
 server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+    res.header('Access-Control-Allow-Methods', '*');
     setTimeout(() => next(), 350);
 });
 

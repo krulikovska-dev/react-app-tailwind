@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import { ShoppingListProvider } from './components/ShoppingListContext.jsx'
+import { ShoppingListProvider } from './context/ShoppingListContext.jsx'
 import App from './App.jsx'
 import './index.css'
 

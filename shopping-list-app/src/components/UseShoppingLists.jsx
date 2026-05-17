@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ShoppingListContext } from "./ShoppingListContext";
+import { ShoppingListContext } from "../context/ShoppingListContext";
 
 export const useShoppingLists = () => {
     const context = useContext(ShoppingListContext);
