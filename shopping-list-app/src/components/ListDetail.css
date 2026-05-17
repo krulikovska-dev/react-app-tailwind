@@ -1,97 +1,147 @@
+/* =========================
+   Detail Card
+========================= */
 .detailCard {
-    width: 80%;
-    margin: 0 auto;
+    width: min(80%, 1200px);
+    margin: 20px auto;
+    padding: 0 30px;
+
+    height: 100%;
+
     border: 1px solid rgba(0, 0, 0, 0.082);
     border-radius: 10px;
-    height: 100%;
-    padding: 0 30px;
-    margin-top: 20px;
+
+    overflow-x: hidden;
 }
 
+/* =========================
+   Editable Inputs
+========================= */
 .editable-description-input {
     width: 100%;
+    min-height: 60px;
+
     padding: 10px 12px;
+
     border: 1px solid #4CAF50;
     border-radius: 8px;
+
     font-size: 1rem;
     font-style: italic;
-    background-color: #f9fff9;
+
     resize: vertical;
-    min-height: 60px;
 }
 
-.listDescription:hover {
-    background-color: #f5f5f5;
-    border-radius: 6px;
-    padding: 4px 8px;
-    margin: -4px -8px;
+.editable-title-input {
+    width: 100%;
+
+    margin: 10px 0;
+    padding: 8px 10px;
+
+    border-radius: 4px;
+
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
+/* =========================
+   Items Section
+========================= */
 .items {
-    border: 1px solid rgba(128, 128, 128, 0.233);
-    box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.194);   
     padding: 0;
-    
+
+    border: 1px solid rgba(128, 128, 128, 0.233);
+
+    box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.194);
+
+    overflow-x: auto;
 }
 
 .items ul {
-    display: block;
     margin: 0;
     padding: 0;
+
     list-style: none;
 }
 
 .items li {
     padding: 0;
-    
 }
 
-button {
-    cursor: pointer;
-}
-
-h2, h3 {
+/* =========================
+   Typography
+========================= */
+h2,
+h3 {
     padding-left: 20px;
+
     text-shadow: 5px 5px 5px rgba(128, 128, 128, 0.146);
+
+    word-wrap: break-word;
 }
 
-.listHeader{
+/* =========================
+   List Header
+========================= */
+.listHeader {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
 }
 
-.listHeader p{
+.listHeader p {
     margin: 0 auto;
 }
 
-.editable-title-input {
-    font-size: 1.5rem;
-    font-weight: bold;
-    width: 100%;
-    border-radius: 2px;
-    padding: 4px 8px;
-    margin: 10px;
+/* =========================
+   Forms
+========================= */
+.addItemForm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.addItemForm input{
-    margin: 5px;
-    padding: 5px;
+.addItemForm input {
+    flex: 1;
+    min-width: 180px;
+
+    margin: 5px 0;
+    padding: 8px;
 }
 
+.dark .addItemForm input {
+    color: white;
+}
+
+/* =========================
+   Filters
+========================= */
 .filterContainer {
     display: flex;
-    gap: 10px;
-    margin: 15px 0;
     flex-wrap: wrap;
+    gap: 10px;
+
+    margin: 15px 0;
 }
 
 .filterBtn {
     padding: 8px 16px;
+
     border: 1px solid #ccc;
-    background-color: white;
     border-radius: 20px;
+
+    background-color: white;
+
     cursor: pointer;
+
     font-size: 14px;
+
+    transition: background 0.2s ease;
 }
 
 .filterBtn.active {
@@ -104,92 +154,230 @@ h2, h3 {
     background-color: #f0f0f0;
 }
 
+/* =========================
+   Empty State
+========================= */
 .noItems {
+    padding: 20px;
+
     text-align: center;
+
     color: #888;
     font-style: italic;
-    padding: 20px;
 }
 
-
-.listFooter{
+/* =========================
+   Footer
+========================= */
+.listFooter {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
+    gap: 1rem;
+
+    flex-wrap: wrap;
 }
 
-.listFooter .info{
+.listFooter .info {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-
-.info{
+.info {
     margin-left: 20px;
 }
 
-button{
+/* =========================
+   Buttons
+========================= */
+button {
     margin: 5px;
-    padding: 3px 10px;
-    background: white;
+    padding: 8px 12px;
+
     border: 1px solid rgba(128, 128, 128, 0.42);
     border-radius: 5px;
+
+    background: white;
+
     box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.105);
-    padding: 8px;
-    
-    
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
+button:hover {
+    transform: translateY(-1px);
+}
+
+.dark button {
+    background-color: rgba(0, 0, 0, 0.336);
+    color: white;
+}
+
+.addButton {
+    background: #4CAF50;
+    color: white;
+}
+
+/* =========================
+   Inputs
+========================= */
 input {
     border: 1px solid rgba(79, 79, 79, 0.167);
     border-radius: 5px;
+
     box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.098);
 }
 
-.addButton{
-    background: #4CAF50;
-    
-}
+/* =========================
+   Button Container
+========================= */
+.buttons {
+    width: auto;
 
-
-
-.buttons{
-    width: 33%;
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
     margin-right: 20px;
 }
 
+/* =========================
+   Members Section
+========================= */
 .membersSection {
     margin-bottom: 20px;
 }
 
 .membersHeader {
-    cursor: pointer;
-    padding: 10px 0;
-    font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    padding: 10px 0;
+
     border-bottom: 1px solid #dddddd7b;
+
+    cursor: pointer;
     user-select: none;
-    
+
+    font-weight: 600;
+
+    transition: background 0.2s ease;
 }
 
-.membersHeader:hover {
-    background-color: #f9f9f9;
+.dark .membersHeader:hover {
+    background-color: #f9f9f91d;
 }
 
 .toggleArrow {
     font-size: 0.9em;
+
     transition: transform 0.2s ease;
 }
 
 .membersList {
-    margin-top: 10px;
+    width: min(100%, 400px);
+
+    margin: 10px auto 0;
     padding-left: 10px;
-    width:20%;
+
     display: block;
-    margin: 0 auto;
 }
 
+/* =========================
+   Responsive Design
+========================= */
+
+/* Tablets */
+@media (max-width: 768px) {
+
+    .detailCard {
+        width: 95%;
+        padding: 0 15px;
+    }
+
+    h2,
+    h3 {
+        padding-left: 10px;
+        font-size: 1.2rem;
+    }
+
+    .editable-title-input {
+        font-size: 1.25rem;
+    }
+
+    .buttons {
+        width: 100%;
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .listFooter {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .info {
+        margin-left: 0;
+    }
+
+    .membersList {
+        width: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+
+    .detailCard {
+        width: 100%;
+        border-radius: 0;
+        padding: 0 10px;
+    }
+
+    .listHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .addItemForm {
+        flex-direction: column;
+    }
+
+    .addItemForm input {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .filterContainer {
+        justify-content: center;
+    }
+
+    .filterBtn {
+        width: 100%;
+        text-align: center;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .editable-title-input {
+        font-size: 1.1rem;
+    }
+
+    .editable-description-input {
+        font-size: 0.95rem;
+    }
+}
