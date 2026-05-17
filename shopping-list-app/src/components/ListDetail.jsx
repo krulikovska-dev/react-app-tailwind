@@ -4,11 +4,15 @@ import Member from "./Member";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useShoppingLists } from "./useShoppingLists";
-import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts";
+import { useLanguage } from "../context/useLanguage";
+import { t } from "../translations";
+import { PieChart, Pie, Cell, Legend, Tooltip, ResponsiveContainer } from "recharts";
 
 function ListDetail() {
     const { listId } = useParams();
     const navigate = useNavigate();
+    const { language } = useLanguage();
+    const tr = t[language]; 
     const { shoppingLists, loading, updateList, deleteList } = useShoppingLists();
 
     const currentList = shoppingLists.find(list => list.id === listId);
@@ -26,15 +30,15 @@ function ListDetail() {
     const [filter, setFilter] = useState("all");
 
     if (loading) {
-        return <div className="detailCard"><div className="loadingSpinner">Loading list details...</div></div>;
+        return <div className="detailCard"><div className="loadingSpinner">{tr.loadingDetails}</div></div>;
     }
 
     if (!currentList) {
         return (
             <div className="detailCard">
-                <h2>Shopping List Not Found</h2>
-                <p>The list you're looking for doesn't exist.</p>
-                <button onClick={() => navigate("/")}>Back to Overview</button>
+                <h2>{tr.listNotFound}</h2>
+                <p>{tr.listNotFoundDesc}</p>
+                <button onClick={() => navigate("/")}>{tr.backToOverview}</button>
             </div>
         );
     }
@@ -114,7 +118,7 @@ function ListDetail() {
     }
 
     function handleDeleteList() {
-        if (!window.confirm(`Delete "${currentList.title}" permanently?`)) return;
+        if (!window.confirm(tr.deleteConfirm)) return;
         deleteList(listId);
         navigate("/");
     }
@@ -177,7 +181,7 @@ function ListDetail() {
                             backgroundColor: listState === "active" ? "#e8f5e9" : "#ffebee",
                             color: listState === "active" ? "#2e7d32" : "#c62828"
                         }}>
-                            {listState === "active" ? "ACTIVE" : "ARCHIVED"}
+                            {listState === "active" ? tr.active : tr.archived}
                         </span>
                     </h2>
                 )}
@@ -198,39 +202,39 @@ function ListDetail() {
                         onClick={handleDescriptionClick}
                         style={{ cursor: "pointer", fontStyle: "italic", color: "#555" }}
                     >
-                        {currentList.description || "Click to add a description..."}
+                        {currentList.description || tr.addDescription}
                     </p>
                 )}
             </div>
 
             <div className="addItemForm">
-                <input type="text" name="title" placeholder="Enter a new item..." value={newItem.title} onChange={handleInputChange} />
-                <input type="text" name="amount" placeholder="Amount" value={newItem.amount} onChange={handleInputChange} />
-                <input type="text" name="unit" placeholder="unit (e.g. bottle, liter, kgs)" value={newItem.unit} onChange={handleInputChange} />
-                <button className="addButton" onClick={addItem}>Add</button>
+                <input type="text" name="title" placeholder={tr.newItemPlaceholder} value={newItem.title} onChange={handleInputChange} />
+                <input type="text" name="amount" placeholder={tr.amount} value={newItem.amount} onChange={handleInputChange} />
+                <input type="text" name="unit" placeholder={tr.unitPlaceholder} value={newItem.unit} onChange={handleInputChange} />
+                <button className="addButton" onClick={addItem}>{tr.add}</button>
             </div>
 
             <div className="filterContainer">
                 <button className={`filterBtn ${filter === "all" ? "active" : ""}`} onClick={() => setFilter("all")}>All</button>
                 <button className={`filterBtn ${filter === "waiting" ? "active" : ""}`} onClick={() => setFilter("waiting")}>
-                    Waiting ({items.filter(i => i.state === "waiting").length})
+                    {tr.waiting} ({items.filter(i => i.state === "waiting").length})
                 </button>
                 <button className={`filterBtn ${filter === "done" ? "active" : ""}`} onClick={() => setFilter("done")}>
-                    Done ({items.filter(i => i.state === "done").length})
+                    {tr.done} ({items.filter(i => i.state === "done").length})
                 </button>
             </div>
 
             <div className="items">
                 <ul>{listItems}</ul>
-                {filteredItems.length === 0 && <p className="noItems">No items found in this filter.</p>}
+                {filteredItems.length === 0 && <p className="noItems">{tr.noItems}</p>}
             </div>
 
             <div className="listFooter">
                 <div className="info">
-                    <p>Created by: {currentList.owner}</p>
+                    <p>{tr.createdBy} {currentList.owner}</p>
                 </div>
                 <div className="buttons">
-                    <button>Edit</button>
+                    
                     <button 
     onClick={toggleArchive}
     style={{
@@ -239,40 +243,46 @@ function ListDetail() {
         fontWeight: "500"
     }}
 >
-    {listState === "active" ? "Archive" : "Make Active"}
+    {listState === "active" ? tr.archive : tr.makeActive}
 </button>
                     <button onClick={handleDeleteList} style={{ backgroundColor: "#d32f2f", color: "white" }}>
-                        Delete
+                        {tr.delete}
                     </button>
                 </div>
             </div>
 
             <div className="membersSection">
                 <div className="membersHeader" onClick={() => setShowMembers(!showMembers)}>
-                    Members &nbsp;
+                    {tr.members} &nbsp;
                     <span className="toggleArrow">{showMembers ? "↑" : "↓"}</span>
                 </div>
                 {showMembers && <ul className="membersList">{listMembers}</ul>}
             </div>
+            
+            
             <div className="chartContainer">
-    <h3>The number of bought items:</h3>
-    <PieChart width={250} height={250}>
+                <h3 className="graphHeading">{tr.graphCount}</h3>
+    <ResponsiveContainer width="80%" height={250}>
+    <PieChart>
         <Pie
             data={[
-                { name: "Waiting", value: items.filter(i => i.state === "waiting").length },
+                
                 { name: "Done", value: items.filter(i => i.state === "done").length },
+                { name: "Waiting", value: items.filter(i => i.state === "waiting").length },
             ]}
             cx="50%"
             cy="50%"
             outerRadius={80}
             dataKey="value"
         >
-            <Cell fill="#f59e0b" />
-            <Cell fill="#4ade80" />
+            <Cell fill="rgba(93, 161, 117, 0.82)" />
+            <Cell fill="rgba(93, 138, 161, 0.82)" />
+            
         </Pie>
         <Tooltip />
         <Legend />
     </PieChart>
+    </ResponsiveContainer>
 </div>
         </div>
     );

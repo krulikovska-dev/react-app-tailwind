@@ -61,7 +61,7 @@
           "title": "Coca Cola",
           "amount": 4,
           "unit": "bottles",
-          "state": "waiting"
+          "state": "done"
         },
         {
           "id": "2-2",
@@ -87,7 +87,15 @@
       "title": "My List",
       "description": "awesome list",
       "owner": "@luis1",
-      "items": [],
+      "items": [
+        {
+          "id": "1",
+          "title": "Milk",
+          "amount": "1",
+          "unit": "liter",
+          "state": "waiting"
+        }
+      ],
       "members": [
         {
           "id": "1",
@@ -95,6 +103,19 @@
         }
       ],
       "listState": "archived"
+    },
+    {
+      "id": "1779046554290",
+      "title": "Another list",
+      "description": "",
+      "owner": "@luis1",
+      "items": [],
+      "members": [
+        {
+          "id": "1",
+          "nick": "@luis1"
+        }
+      ]
     }
   ]
 }

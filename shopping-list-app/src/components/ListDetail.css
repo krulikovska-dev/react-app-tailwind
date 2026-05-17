@@ -12,6 +12,11 @@
     border-radius: 10px;
 
     overflow-x: hidden;
+    
+}
+
+.detailCard h2 {
+    font-size: 2rem;
 }
 
 /* =========================
@@ -116,6 +121,11 @@ h3 {
 
 .dark .addItemForm input {
     color: white;
+}
+
+.chartContainer{
+    justify-items: center;
+    margin-top: 3rem;
 }
 
 /* =========================
@@ -287,14 +297,13 @@ input {
     margin: 10px auto 0;
     padding-left: 10px;
 
-    display: block;
+    display: flex;
+    justify-content: space-between;
 }
 
-.chartContainer {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
+
+
+
 
 /* =========================
    Responsive Design

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useShoppingLists } from "./useShoppingLists";
 import { useLanguage } from "../context/useLanguage";
 import { t } from "../translations";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 
 function Overview() {
     
@@ -16,6 +17,11 @@ function Overview() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [filter, setFilter] = useState("all");
     const { shoppingLists, loading, addList, error } = useShoppingLists();  
+
+    const chartData = shoppingLists.map(list => ({
+    name: list.title,
+    items: list.items?.length || 0
+}));
 
     const handleDetailClick = (listId) => {
         navigate(`/detail/${listId}`);
@@ -29,7 +35,7 @@ function Overview() {
     if (loading) {
         return (
             <div className="detailCard">
-                <div className="loadingSpinner">Loading shopping lists...</div>
+                <div className="loadingSpinner">{tr.loadingSpinner}</div>
             </div>
         );
     }
@@ -37,9 +43,9 @@ function Overview() {
     if (error) {
         return (
             <div className="detailCard">
-                <h2>Error loading lists</h2>
+                <h2>{tr.errorLoading}</h2>
                 <p>{error}</p>
-                <button onClick={() => window.location.reload()}>Retry</button>
+                <button onClick={() => window.location.reload()}>{tr.retry}</button>
             </div>
         );
     }
@@ -65,6 +71,7 @@ return (
                     {/* Add other filter buttons similarly with dark classes */}
                 </div>
             </div>
+            
 
             <div className="shoppingCardsGrid">
                 {shoppingLists.length === 0 ? (
@@ -82,7 +89,27 @@ return (
                     ))
                 )}
             </div>
+            <div className="chartWrapper">
+                <h3 className="graphHeading">{tr.itemCount}</h3>
+    <ResponsiveContainer width="100%" height={250}>
+        
+        <BarChart data={chartData} margin={{ top: 10, right: 20, left: 0, bottom: 60 }}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis
+                dataKey="name"
+                angle={-35}
+                textAnchor="end"
+                interval={0}
+                tick={{ fontSize: 12 }}
+            />
+            <YAxis allowDecimals={false} />
+            <Tooltip />
+            <Bar dataKey="items" fill="rgba(93, 138, 161, 0.4)" radius={[4, 4, 0, 0]} />
+        </BarChart>
+    </ResponsiveContainer>
+</div>
         </div>
+
 
         <NewListModal
             isOpen={isModalOpen}

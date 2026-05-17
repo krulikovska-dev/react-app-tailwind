@@ -10,6 +10,8 @@ export const t = {
         noLists: "No shopping lists yet. Create your first one!",
         errorLoading: "Error loading lists",
         retry: "Retry",
+        itemCount: "Which of my lists has the most items?",
+        loadingSpinner: "Loading shopping lists...",
         // Card
         active: "ACTIVE",
         archived: "ARCHIVED",
@@ -42,6 +44,7 @@ export const t = {
         members: "Members",
         addDescription: "Click to add a description...",
         deleteConfirm: "Delete permanently?",
+        graphCount: "How many items is already bought?"
     },
     cs: {
         // Navbar
@@ -54,6 +57,8 @@ export const t = {
         noLists: "Žádné nákupní seznamy. Vytvořte svůj první!",
         errorLoading: "Chyba při načítání seznamů",
         retry: "Zkusit znovu",
+        itemCount: "Který z mých seznamů má největší počet položek?",
+        loadingSpinner: "Loading shopping lists...",
         // Card
         active: "AKTIVNÍ",
         archived: "ARCHIVOVANÝ",
@@ -86,5 +91,6 @@ export const t = {
         members: "Členové",
         addDescription: "Klikněte pro přidání popisu...",
         deleteConfirm: "Smazat trvale?",
+        graphCount: "Kolik položek máme nakoupeno?"
     }
 };

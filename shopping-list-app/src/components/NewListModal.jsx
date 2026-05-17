@@ -1,9 +1,13 @@
 import { useState } from "react";
 import "./NewListModal.css";
+import { useLanguage } from "../context/useLanguage";
+import { t } from "../translations";
 
 function NewListModal({ isOpen, onClose, onCreateList }) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const { language } = useLanguage();
+    const tr = t[language]; 
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,41 +34,41 @@ function NewListModal({ isOpen, onClose, onCreateList }) {
         <div className="modalOverlay" onClick={onClose}>
             <div className="modalContent" onClick={e => e.stopPropagation()}>
                 <div className="modalHeader">
-                    <h2 className="text-card-foreground">Create New Shopping List</h2>
+                    <h2 className="text-card-foreground">{tr.createNewList}</h2>
                     <button className="closeButton" onClick={onClose}>×</button>
                 </div>
 
                 <form onSubmit={handleSubmit}>
                     <div className="formGroup">
-                        <label htmlFor="title" className="text-card-foreground">List Title *</label>
+                        <label htmlFor="title" className="text-card-foreground">{tr.listTitle}</label>
                         <input
                             id="title"
                             type="text"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            placeholder="e.g. Vacation Shopping"
+                            placeholder={tr.titlePlaceholder}
                             required
                             autoFocus
                         />
                     </div>
 
                     <div className="formGroup">
-                        <label htmlFor="description" className="text-card-foreground">Description</label>
+                        <label htmlFor="description" className="text-card-foreground">{tr.description}</label>
                         <textarea
                             id="description"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            placeholder="What is this list for?"
+                            placeholder={tr.decriptionPlaceholder}
                             rows="3"
                         />
                     </div>
 
                     <div className="modalFooter">
                         <button type="button" className="cancelButton" onClick={onClose}>
-                            Cancel
+                            {tr.cancel}
                         </button>
                         <button type="submit" className="createButton">
-                            Create List
+                            {tr.createList}
                         </button>
                     </div>
                 </form>
