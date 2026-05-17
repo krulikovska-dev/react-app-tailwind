@@ -1,0 +1,195 @@
+.detailCard {
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.082);
+    border-radius: 10px;
+    height: 100%;
+    padding: 0 30px;
+    margin-top: 20px;
+}
+
+.editable-description-input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #4CAF50;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-style: italic;
+    background-color: #f9fff9;
+    resize: vertical;
+    min-height: 60px;
+}
+
+.listDescription:hover {
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    padding: 4px 8px;
+    margin: -4px -8px;
+}
+
+.items {
+    border: 1px solid rgba(128, 128, 128, 0.233);
+    box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.194);   
+    padding: 0;
+    
+}
+
+.items ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.items li {
+    padding: 0;
+    
+}
+
+button {
+    cursor: pointer;
+}
+
+h2, h3 {
+    padding-left: 20px;
+    text-shadow: 5px 5px 5px rgba(128, 128, 128, 0.146);
+}
+
+.listHeader{
+    display: flex;
+    align-items: center;
+}
+
+.listHeader p{
+    margin: 0 auto;
+}
+
+.editable-title-input {
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 100%;
+    border-radius: 2px;
+    padding: 4px 8px;
+    margin: 10px;
+}
+
+.addItemForm input{
+    margin: 5px;
+    padding: 5px;
+}
+
+.filterContainer {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.filterBtn {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filterBtn.active {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+.filterBtn:hover:not(.active) {
+    background-color: #f0f0f0;
+}
+
+.noItems {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 20px;
+}
+
+
+.listFooter{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.listFooter .info{
+    display: flex;
+}
+
+
+.info{
+    margin-left: 20px;
+}
+
+button{
+    margin: 5px;
+    padding: 3px 10px;
+    background: white;
+    border: 1px solid rgba(128, 128, 128, 0.42);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.105);
+    padding: 8px;
+    
+    
+}
+
+input {
+    border: 1px solid rgba(79, 79, 79, 0.167);
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgba(128, 128, 128, 0.098);
+}
+
+.addButton{
+    background: #4CAF50;
+    
+}
+
+
+
+.buttons{
+    width: 33%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.membersSection {
+    margin-bottom: 20px;
+}
+
+.membersHeader {
+    cursor: pointer;
+    padding: 10px 0;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #dddddd7b;
+    user-select: none;
+    
+}
+
+.membersHeader:hover {
+    background-color: #f9f9f9;
+}
+
+.toggleArrow {
+    font-size: 0.9em;
+    transition: transform 0.2s ease;
+}
+
+.membersList {
+    margin-top: 10px;
+    padding-left: 10px;
+    width:20%;
+    display: block;
+    margin: 0 auto;
+}
+
