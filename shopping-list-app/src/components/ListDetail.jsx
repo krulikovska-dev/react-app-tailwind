@@ -4,6 +4,7 @@ import Member from "./Member";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useShoppingLists } from "./useShoppingLists";
+import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts";
 
 function ListDetail() {
     const { listId } = useParams();
@@ -85,6 +86,8 @@ function ListDetail() {
             />
         </li>
     ));
+
+
 
     function handleInputChange(e) {
         const { name, value } = e.target;
@@ -251,6 +254,26 @@ function ListDetail() {
                 </div>
                 {showMembers && <ul className="membersList">{listMembers}</ul>}
             </div>
+            <div className="chartContainer">
+    <h3>The number of bought items:</h3>
+    <PieChart width={250} height={250}>
+        <Pie
+            data={[
+                { name: "Waiting", value: items.filter(i => i.state === "waiting").length },
+                { name: "Done", value: items.filter(i => i.state === "done").length },
+            ]}
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            dataKey="value"
+        >
+            <Cell fill="#f59e0b" />
+            <Cell fill="#4ade80" />
+        </Pie>
+        <Tooltip />
+        <Legend />
+    </PieChart>
+</div>
         </div>
     );
 }

@@ -1,6 +1,10 @@
 import "./ShoppingListCard.css";
+import { useLanguage } from "../context/useLanguage";
+import { t } from "../translations";
 
 function ShoppingListCard({ id, title, description, state = "active", onDetailClick }) {
+    const { language } = useLanguage();
+    const tr = t[language]; 
     return (
         <div className="shoppingListCard w-[200px] h-[200px] rounded-3xl border border-border 
                 bg-card text-card-foreground shadow-sm hover:shadow-md 
@@ -11,7 +15,7 @@ function ShoppingListCard({ id, title, description, state = "active", onDetailCl
                     ${state === "active" 
                       ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300" 
                       : "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"}`}>
-                    {state === "active" ? "ACTIVE" : "ARCHIVED"}
+                    {state === "active" ? tr.active : tr.archived}
                 </span>
             </div>
             
@@ -22,7 +26,7 @@ function ShoppingListCard({ id, title, description, state = "active", onDetailCl
                            border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300"
                 onClick={() => onDetailClick(id)}
             >
-                View Details
+                {tr.viewDetails}
             </button>
         </div>
     );

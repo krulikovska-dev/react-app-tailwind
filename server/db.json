@@ -20,7 +20,7 @@
           "title": "Bread",
           "amount": 1,
           "unit": "piece",
-          "state": "bought"
+          "state": "waiting"
         },
         {
           "id": "1-3",
@@ -28,6 +28,13 @@
           "amount": 12,
           "unit": "pieces",
           "state": "waiting"
+        },
+        {
+          "id": "4",
+          "title": "my item",
+          "amount": "1",
+          "unit": "item",
+          "state": "done"
         }
       ],
       "members": [

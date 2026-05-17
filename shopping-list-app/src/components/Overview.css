@@ -15,7 +15,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, 200px);
-    gap: 30px;
+    gap: 60px;
     justify-content: center;
     margin-top: 40px;
     margin-bottom: 40px;
